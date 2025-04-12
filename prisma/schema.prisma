@@ -10,6 +10,18 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+enum Status {
+  done
+  progress
+}
+model Todo {
+  id          Int @id @default(autoincrement())
+  name        String @db.VarChar(50)
+  status      Status @default(progress)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
