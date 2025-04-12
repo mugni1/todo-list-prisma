@@ -1,14 +1,17 @@
 import FormCreateTodo from "@/_components/FormCreateTodo";
 import ListTodo from "@/_components/ListTodo";
+import { getTodos } from "@/_services";
+import type { Todo } from "@/generated/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const { data }: { data: Todo[] } = await getTodos();
   return (
     <section className="min-h-screen container mx-auto p-5">
       <h1 className="text-xl md:text-2xl font-extrabold text-center">
         MY TODO LIST
       </h1>
       <FormCreateTodo />
-      <ListTodo />
+      <ListTodo todos={data} />
     </section>
   );
 }
