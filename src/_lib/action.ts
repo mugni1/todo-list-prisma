@@ -34,3 +34,17 @@ export const todoCreate = async (prev: any, formData: FormData) => {
     };
   }
 };
+
+export const todoDelete = async (id: number) => {
+  try {
+    await prisma.todo.delete({ where: { id } });
+    revalidatePath("/");
+    return {
+      status: true,
+    };
+  } catch {
+    return {
+      status: false,
+    };
+  }
+};
