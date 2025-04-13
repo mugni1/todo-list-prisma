@@ -7,7 +7,10 @@ import { revalidatePath } from "next/cache";
 const todoValidateSchema = z.object({
   name: z.string().min(5),
 });
-export const todoCreate = async (prev: any, formData: FormData) => {
+export const todoCreate = async (
+  prevState: { status?: string; Error?: unknown } | null,
+  formData: FormData
+) => {
   const dataBody = todoValidateSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
@@ -51,7 +54,7 @@ export const todoDelete = async (id: number) => {
 
 export const todoSetDone = async (id: number) => {
   try {
-    const res = await prisma.todo.update({
+    await prisma.todo.update({
       where: { id },
       data: {
         status: "done",
