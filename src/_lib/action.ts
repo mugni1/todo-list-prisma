@@ -48,3 +48,22 @@ export const todoDelete = async (id: number) => {
     };
   }
 };
+
+export const todoSetDone = async (id: number) => {
+  try {
+    const res = await prisma.todo.update({
+      where: { id },
+      data: {
+        status: "done",
+      },
+    });
+    revalidatePath("/");
+    return {
+      status: true,
+    };
+  } catch {
+    return {
+      status: false,
+    };
+  }
+};
