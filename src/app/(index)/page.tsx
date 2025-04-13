@@ -1,5 +1,6 @@
 import FormCreateTodo from "@/_components/FormCreateTodo";
 import ListTodo from "@/_components/ListTodo";
+import ProgressAndDone from "@/_components/ProgressAndDoneBtn";
 import { getTodos } from "@/_services";
 import type { Todo } from "@/generated/prisma";
 
@@ -11,6 +12,7 @@ export default async function Home() {
         MY TODO LIST
       </h1>
       <FormCreateTodo />
+      <ProgressAndDone />
       <ListTodo todos={data} />
     </section>
   );
