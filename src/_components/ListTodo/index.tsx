@@ -7,7 +7,16 @@ export default function ListTodo({ todos }: { todos: Todo[] }) {
     return (
       <div className=" w-full md:w-5/12 mx-auto  my-5 relative flex flex-col gap-3">
         <h2 className=" text-lg md:text-xl text-red-500 text-center p-3 shadow-md border border-slate-400 rounded-md font-semibold">
-          Todo not founds
+          Todo not found
+        </h2>
+      </div>
+    );
+  }
+  if (todos.length < 1) {
+    return (
+      <div className=" w-full md:w-5/12 mx-auto  my-5 relative flex flex-col gap-3">
+        <h2 className=" text-lg md:text-xl text-red-500 text-center p-3 shadow-md border border-slate-400 rounded-md font-semibold">
+          Not have todo
         </h2>
       </div>
     );
