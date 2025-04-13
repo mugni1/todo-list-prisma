@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://todolist_mineformat:2053a2fe452757a992acba1f9a0440893925d5ab@0yg6h.h.filess.io:61001/todolist_mineformat"
 }
 
 enum Status {
