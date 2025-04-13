@@ -1,10 +1,9 @@
 "use client";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 
 export default function ProgressAndDone() {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const status = searchParams.get("status");
   return (
